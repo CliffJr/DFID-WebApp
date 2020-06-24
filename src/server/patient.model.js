@@ -29,6 +29,9 @@ let Patient = new Schema({
     },
     dateTakenHbA1c: {
         type: String
+    },
+    leftImage1: {
+        type: String
     }
 
 });

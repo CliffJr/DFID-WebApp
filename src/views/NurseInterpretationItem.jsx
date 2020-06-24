@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import { Row, Col, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 import { Card } from "components/Card/Card.jsx";
 import { FormInputs } from 'components/FormInputs/FormInputs.jsx'
-import Checkbox from 'components/CustomCheckbox/CustomCheckbox.jsx';
 
 class NurseInterpretationItem extends Component {
 
@@ -31,15 +30,7 @@ class NurseInterpretationItem extends Component {
                                                 </FormControl>
                                             </FormGroup>
                                         </Col>
-                                        <Col className="col-md-6">
-                                            <h6><strong>Additional suspected  eye pathologies</strong></h6>
-                                            <Checkbox number="1" label="Cataracts" />
-                                            <Checkbox number="2" label="Refractive error" />
-                                            <Checkbox number="3" label="Age related macular edema (ARMD)" />
-                                            <Checkbox number="4" label="Glaucoma" />
-                                            <Checkbox number="5" label="Amblyopia" />
-                                            <Checkbox number="6" label="Strabismus" />
-                                        </Col>
+                              
                                     </Row>
                                     <h5>Intra Ocular Pressure</h5>
                                     <Row>
@@ -153,6 +144,7 @@ class NurseInterpretationItem extends Component {
 
                                         ]}
                                     />
+                                    <input type="submit" value="Submit" />
                                     <div className="clearfix" />
                                 </form>
                             }

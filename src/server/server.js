@@ -5,9 +5,33 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const PORT = 4000;
+const multer = require('multer');
+const fs = require('fs');
+const path = require('path');
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        var dirName = path.join(process.cwd(), './uploads/')
+        console.log(dirName);
+        if (!fs.existsSync(dirName)) {
+            fs.mkdirSync(dirName);
+        }
+        cb(null, dirName);
+    }
+}, {
+    filename: (req, file, cb) => {
+        cb(null, Date.now() + '-' + file.originalname)
+    }
+});
+
+var upload = multer({
+    storage: storage,
+    limits: {fileSize: 10000000},
+}).single('leftImage1');
 
 const dfidRoutes = express.Router();
 
+app.use(express.static('uploads'));
 app.use(cors());
 app.use(bodyParser.json());
 mongoose.connect('mongodb://127.0.0.1:27017/dfidDb', {
@@ -40,7 +64,8 @@ dfidRoutes.route('/:id').get(function (req, res) {
 });
 
 //add the route which is needed to be able to add new patient items
-dfidRoutes.route('/add').post(function (req, res) {
+dfidRoutes.route('/add').post(upload, function(req, res) {
+    console.log(req.file);
     let patient = new Patient(req.body);
     patient.save()
         .then(patient => {

@@ -6,8 +6,6 @@ import { FormInputs } from 'components/FormInputs/FormInputs.jsx';
 import Datetime from 'react-datetime';
 import 'react-datetime/css/react-datetime.css';
 
-
-
 class PatientReferalItem extends Component {
     constructor(props, context) {
         super(props, context);
@@ -138,6 +136,7 @@ class PatientReferalItem extends Component {
                                             </FormGroup>
                                         </Col>
                                     </Row>
+                                    <input type="submit" value="Submit"/>
                                     <div className="clearfix" />
                                 </form>
                             }
@@ -149,4 +148,5 @@ class PatientReferalItem extends Component {
         );
     }
 }
+
 export default PatientReferalItem;

@@ -21,7 +21,7 @@ class NewPatientsContainer extends Component {
 
     render() {
         return (
-                 <NewPatientsList newPatientDetails={this.state.dfidDb}/>
+                 <NewPatientsList newPatientDetails={this.state.dfidDb} />
         );
     }
 }

@@ -1,8 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 import { Grid, Row, Col, Table } from "react-bootstrap";
 import Card from "components/Card/Card.jsx";
+import Button from "components/CustomButton/CustomButton.jsx";                                                        
 
 const NewPatientsList = (props) => {
     const patientslist = props.newPatientDetails;
@@ -20,34 +20,28 @@ const NewPatientsList = (props) => {
                                 <Table hover>
                                     <thead>
                                         <tr>
+                                            <th>PatientID</th>
                                             <th>Firstname</th>
                                             <th>Lastname</th>
-                                            <th>PatientID</th>
                                             <th>Year of Diabetes</th>
-                                            <th>Gender</th>
-                                            <th>visual Acuity Left</th>
-                                            <th>visual Acuity Right</th>
-                                            <th>visual Acu</th>
-                                            <th>visual Acui</th>
+                                            <th>Message Date Received</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         {
                                             patientslist.map((currentPatient) => (
-                                                <Link to={currentPatient._id}>
-                                                    <tr key={currentPatient._id}>
-                                                        <td>{currentPatient.firstname}</td>
-                                                        <td>{currentPatient.lastname}</td>
-                                                        <td>{currentPatient.patientId}</td>
-                                                        <td>{currentPatient.yearOfDiabetes}</td>
-                                                        <td>{currentPatient.gender}</td>
-                                                        <td>{currentPatient.visualAcuityLeft}</td>
-                                                        <td>{currentPatient.visualAcuityRight}</td>
-                                                        <td>{currentPatient.recentHbA1c}</td>
-                                                        <td>{currentPatient.dateTakenHbA1c}</td>
-                                                    </tr>
-                                                </Link>
-                                            ))}
+                                                <tr key={currentPatient._id}>
+                                                    <td>{currentPatient.patientId}</td>
+                                                    <td>{currentPatient.firstname}</td>
+                                                    <td>{currentPatient.lastname}</td>
+                                                    <td>{currentPatient.yearOfDiabetes}</td>
+                                                    <td>{currentPatient.dateTakenHbA1c}</td>
+                                                    <td>
+                                                        <Button className="bg-info">Open</Button>
+                                                    </td>
+                                                </tr>
+                                            )) 
+                                            }
                                     </tbody>
                                 </Table>
                             }

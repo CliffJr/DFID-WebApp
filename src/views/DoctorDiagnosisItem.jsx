@@ -12,7 +12,6 @@ import 'react-datetime/css/react-datetime.css';
 class DoctorDiagnosisItem extends Component {
 
     render() {
-
         return (
             <Row>
                 <Col md={12}>

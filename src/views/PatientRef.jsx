@@ -2,7 +2,7 @@
 import React, { Component } from "react";
 import { Grid } from "react-bootstrap";
 import StepOne from './stepOne';
-import StepTwo from './stepTwo';
+//import StepTwo from './stepTwo.old';
 import StepThree from './stepThree';
 import StepFour from './stepFour';
 import MultiStep from './react-multistep';
@@ -16,7 +16,7 @@ class PatientRef extends Component {
   render() {
     const steps = [
       { component: <StepOne /> },
-      { component: <StepTwo /> },
+      //{ component: <StepTwo /> },
       { component: <StepThree /> },
       { component: <StepFour /> }
     ]

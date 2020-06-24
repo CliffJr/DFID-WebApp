@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Row, Col, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
+import { Row, Col, FormGroup, ControlLabel, FormControl, Form } from 'react-bootstrap';
 import { Card } from "components/Card/Card.jsx";
 import { FormInputs } from 'components/FormInputs/FormInputs.jsx';
 import Datetime from 'react-datetime';
@@ -20,6 +20,7 @@ class PatientDetailsItem extends Component {
         this.onChangeVisualAcuityRight = this.onChangeVisualAcuityRight.bind(this);
         this.onChangeRecentHbA1c = this.onChangeRecentHbA1c.bind(this);
         this.onChangeDateTakenHbA1c = this.onChangeDateTakenHbA1c.bind(this);
+        this.onChangeLeftImage1 = this.onChangeLeftImage1.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
@@ -31,7 +32,8 @@ class PatientDetailsItem extends Component {
             visualAcuityLeft: '',
             visualAcuityRight: '',
             recentHbA1c: '',
-            dateTakenHbA1c: ''
+            dateTakenHbA1c: '',
+            leftImage1: ''
         }
     }
 
@@ -68,8 +70,13 @@ class PatientDetailsItem extends Component {
     }
 
     onChangeDateTakenHbA1c = (date) => {
-        this.setState({ dateTakenHbA1c: date._d})
+        this.setState({ dateTakenHbA1c: date._d })
     }
+
+    onChangeLeftImage1 = (e) =>{
+        this.setState({leftImage1: e.target.file})
+    }
+
     // To add new employee when user submits the form
     onSubmit = (e) => {
         e.preventDefault();
@@ -83,7 +90,8 @@ class PatientDetailsItem extends Component {
             visualAcuityLeft: this.state.visualAcuityLeft,
             visualAcuityRight: this.state.visualAcuityRight,
             recentHbA1c: this.state.recentHbA1c,
-            dateTakenHbA1c: this.state.dateTakenHbA1c
+            dateTakenHbA1c: this.state.dateTakenHbA1c,
+            leftImage1: this.state.leftImage1
         };
 
         axios.post('http://localhost:4000/dfidDb/add', newPatient)
@@ -94,23 +102,11 @@ class PatientDetailsItem extends Component {
                 console.log(error);
             });
 
-            alert('Patient successfully saved. Click Next to proceed');
-
-       // this.state = {
-         //   firstname: '',
-           // lastname: '',
-           // patientId: '',
-            //yearOfDiabetes: '',
-            //gender: '',
-            //visualAcuityLeft: '',
-            //visualAcuityRight: '',
-            //recentHbA1c: '',
-            //dateTakenHbA1c: ''
-        //}
+        alert('Patient successfully saved. Click Next to proceed');
     }
 
     render() {
-      
+
         return (
             <Row>
                 <Col md={12}>
@@ -153,7 +149,7 @@ class PatientDetailsItem extends Component {
                                             name: "patientId",
                                             type: "text",
                                             bsClass: "form-control",
-                                            placeholder: "Patience Identity Number",
+                                            placeholder: "08-05-oa-DFID-000",
                                             defaultValue: "",
                                             required: true,
                                             value: this.state.patientId,
@@ -183,6 +179,50 @@ class PatientDetailsItem extends Component {
                                         </FormGroup>
                                     </Col>
                                 </Row>
+                                <FormInputs
+                                    ncols={["col-md-6", "col-md-6"]}
+                                    properties={[
+                                        {
+                                            label: "Left Eye Image 1",
+                                            name: "LeftEyeImage1",
+                                            type: "file",
+                                            bsClass: "form-control",
+                                            placeholder: "Upload Image",
+                                            required: true,
+                                            value: this.state.leftImage1,
+                                            onChange: this.onChangeLeftImage1
+                                        },
+                                        {
+                                            label: "Right Eye Image 1",
+                                            name: "RightEyeImage1",
+                                            type: "file",
+                                            bsClass: "form-control",
+                                            placeholder: "Upload Image",
+                                            required: true
+                                        }
+                                    ]}
+                                />
+                                 <FormInputs
+                                    ncols={["col-md-6", "col-md-6"]}
+                                    properties={[
+                                        {
+                                            label: "Left Eye Image 2",
+                                            name: "LeftEyeImage2",
+                                            type: "file",
+                                            bsClass: "form-control",
+                                            placeholder: "Upload Image",
+                                            required: true
+                                        },
+                                        {
+                                            label: "Right Eye Image 2",
+                                            name: "RightEyeImage2",
+                                            type: "file",
+                                            bsClass: "form-control",
+                                            placeholder: "Upload Image",
+                                            required: true
+                                        }
+                                    ]}
+                                />
                                 <Row>
                                     <Col className="col-md-6">
                                         <FormGroup controlId="formControlsSelect" >
@@ -227,7 +267,6 @@ class PatientDetailsItem extends Component {
                                     <Col className="col-md-6">
                                         <FormGroup
                                             controlId="formBasicText"
-
                                         >
                                             <ControlLabel>Recent HbA1c</ControlLabel>
                                             <FormControl
