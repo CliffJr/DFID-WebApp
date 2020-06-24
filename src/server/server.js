@@ -55,6 +55,15 @@ dfidRoutes.route('/').get(function (req, res) {
     });
 });
 
+//Server static assets if in production
+if(process.env.NODE_ENV === 'production'){
+    //set a static folder
+    app.use(express.static('DFID_WEB_APP/build'));
+    app.get('*',(req,res)=>{
+        res.sendFile(path.resolve(_dirname, 'DFID_WEB_APP','build', 'index.html'));
+    });
+}
+
 //retrieve dfidDb Item
 dfidRoutes.route('/:id').get(function (req, res) {
     let id = req.params.id;
