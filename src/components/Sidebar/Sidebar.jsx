@@ -34,14 +34,14 @@ class Sidebar extends Component {
         data-color={this.props.color}
         data-image={this.props.image}
       >
-          {this.props.hasImage ? (
-            <div className="sidebar-background" style={sidebarBackground} />
-          ) : (
+        {this.props.hasImage ? (
+          <div className="sidebar-background" style={sidebarBackground} />
+        ) : (
             null
           )}
         <div className="logo">
           <a
-            href="#"
+            href="https://127.0.0.1:3000"
             className="simple-text logo-mini"
           >
             <div className="logo-img">
@@ -49,7 +49,7 @@ class Sidebar extends Component {
             </div>
           </a>
           <a
-            href="#"
+            href="https://127.0.0.1:3000"
             className="simple-text logo-normal"
           >
             SolidarMed

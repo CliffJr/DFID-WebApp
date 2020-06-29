@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Row, Col, FormGroup, ControlLabel, FormControl, Form } from 'react-bootstrap';
+import { Row, Col, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 import { Card } from "components/Card/Card.jsx";
 import { FormInputs } from 'components/FormInputs/FormInputs.jsx';
 import Datetime from 'react-datetime';

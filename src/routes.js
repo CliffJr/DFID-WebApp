@@ -6,8 +6,15 @@ import Help from "views/Help.jsx";
 import PatientRef from "views/PatientRef.jsx";
 import Notifications from "views/Notifications.jsx";
 import PatientRecords from "views/PatientRecords";
+import Login from "./views/LoginContainer"
 
 const dashboardRoutes = [
+  {
+    path: "/login",
+    name: "login",
+    component: Login,
+    layout: "/user"
+  },
   {
     path: "/notifications",
     name: "Dashboard",

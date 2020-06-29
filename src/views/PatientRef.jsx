@@ -26,7 +26,7 @@ class PatientRef extends Component {
         <Grid fluid>
           <div className="card">
             <div className="header">
-              <h4 className="title" className="text-center">DIGITAL FUNDOSCOPY IMAGING DEVICE REFERAL FORM</h4>
+              <h4 className="title text-center">DIGITAL FUNDOSCOPY IMAGING DEVICE REFERAL FORM</h4>
             </div>
             <div className="content">
               <MultiStep steps={steps} />

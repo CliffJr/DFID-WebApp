@@ -8,7 +8,7 @@ class Footer extends Component {
         <Grid fluid>   
           <p className="copyright pull-right">
             &copy; {new Date().getFullYear()}{" "}
-            <a href="">
+            <a href="https://www.solidarmed.ch/en/zimbabwe">
               SolidarMed 
             </a>
             , eHealth Team, Zimbabwe.
