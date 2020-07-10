@@ -5,7 +5,7 @@ import ReactImageZoom from 'react-image-zoom';
 import IM2783RE from "../assets/img/IM2783RE.JPG";
 
 const ImageDisplay = (props) => {
-  const propss = { width: 600, height: 500, zoomWidth: 800, img: IM2783RE };
+  const propss = { width: 600, height: 500, zoomWidth: 750, img: IM2783RE };
   return (
     <Row>
       <Col md={12}>
