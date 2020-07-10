@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import Button from "components/CustomButton/CustomButton.jsx";
-import {Row,Col} from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 //-- css
 import { css, styled, setPragma } from 'goober';
 setPragma(React.createElement)
@@ -19,7 +19,7 @@ const LiClass = props => css`
   padding: 0 0.7rem;
   cursor: pointer;
 
-  color: ${props.state === 'todo' ? 'silver': 'black'};
+  color: ${props.state === 'todo' ? 'silver' : 'black'};
   border-bottom: 4px solid ${props.state === 'todo' ? 'silver' : '#33C3F0'};
 
   &:before {
@@ -28,9 +28,9 @@ const LiClass = props => css`
     float: left;
     left: 50%;
 
-    ${props.state === 'todo' ? 'content: "\u039F";' : 
-                       props.state === 'doing' ? 'content: "\u2022";' : 
-                      'content: "\u2713";'}
+    ${props.state === 'todo' ? 'content: "\u039F";' :
+    props.state === 'doing' ? 'content: "\u2022";' :
+      'content: "\u2713";'}
     color: ${props.state === 'todo' ? 'silver' : 'white'};
     background-color: ${props.state === 'todo' ? 'white' : '#33C3F0'};  
     width: 1.2em;
@@ -84,7 +84,7 @@ const getButtonsState = (indx, length) => {
 
 export default function MultiStep(props) {
   let showNavigation = true
-  if(props.showNavigation && props.showNavigation)showNavigation = props.showNavigation
+  if (props.showNavigation && props.showNavigation) showNavigation = props.showNavigation
 
   const [stylesState, setStyles] = useState(getNavStyles(0, props.steps.length))
   const [compState, setComp] = useState(0)
@@ -114,41 +114,41 @@ export default function MultiStep(props) {
     }
   }
 
-  const renderSteps = () =>{
+  const renderSteps = () => {
     props.steps.map((s, i) => (
-        <li> 
-          className={LiClass({state: stylesState[i]})} 
-          onClick={handleOnClick}
-          key={i}
-          value={i}
+      <li>
+        className={LiClass({ state: stylesState[i] })}
+        onClick={handleOnClick}
+        key={i}
+        value={i}
         >
-          <span>{i+1}</span>
-        </li>
+          <span>{i + 1}</span>
+      </li>
     ))
-    }
+  }
   const renderNav = show =>
     show && (
-        <div className="places-buttons">
-      <Row >
-       <Col md={2}mdOffset={3} className="text-center">
-        <Button  md={6} bsStyle="danger" block pullRight fill type="submit"
-        style={buttonsState.showPreviousBtn ? {} : { display: 'none' }}
-        onClick={previous} 
-        >
-                              Previous
+      <div className="places-buttons">
+        <Row >
+          <Col md={2} mdOffset={3} className="text-center">
+            <Button md={6} bsStyle="danger" block pullRight fill type="submit"
+              style={buttonsState.showPreviousBtn ? {} : { display: 'none' }}
+              onClick={previous}
+            >
+              Previous
                             </Button>
 
-        </Col>
-        <Col md={2} mdOffset={3} className="text-center">
-        <Button bsStyle="info" block pullRight fill type="submit"
-          style={buttonsState.showNextBtn ? {} : { display: 'none' }}
-          onClick={next}
-        >
-          Next
+          </Col>
+          <Col md={2} mdOffset={3} className="text-center">
+            <Button bsStyle="info" block pullRight fill type="submit"
+              style={buttonsState.showNextBtn ? {} : { display: 'none' }}
+              onClick={next}
+            >
+              Next
         </Button>
-        </Col>
-        <br/>
-      </Row>
+          </Col>
+          <br />
+        </Row>
       </div>
     )
 

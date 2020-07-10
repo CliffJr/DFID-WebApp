@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Row, Col, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 import { Card } from "components/Card/Card.jsx";
-import { FormInputs } from 'components/FormInputs/FormInputs.jsx';
 
 import Datetime from 'react-datetime';
 import 'react-datetime/css/react-datetime.css';
@@ -38,18 +37,6 @@ class PatientReferalItem extends Component {
                             title="Referal Notes"
                             content={
                                 <form>
-                                    <FormInputs
-                                        ncols={["col-md-12"]}
-                                        properties={[
-                                            {
-                                                label: "Name of Health Care Worker",
-                                                type: "text",
-                                                bsClass: "form-control",
-                                                placeholder: "Name of Health Care Worker",
-                                                disabled: true
-                                            }
-                                        ]}
-                                    />
                                     <Row>
                                         <Col className="col-md-6">
                                             <FormGroup>
@@ -112,31 +99,118 @@ class PatientReferalItem extends Component {
                                     <Row>
                                         <Col className="col-md-6">
                                             <FormGroup controlId="formControlsSelect" >
-                                                <ControlLabel>Diabetes Type</ControlLabel>
-                                                <FormControl componentClass="select" placeholder="">
-                                                    <option>...</option>
-                                                    <option>Type 1</option>
-                                                    <option>Type 2</option>
-                                                    <option>Gestational</option>
-                                                    <option>Prediabetes</option>
-                                                </FormControl>
-                                            </FormGroup>
-                                        </Col>
-                                        <Col className="col-md-6">
-                                            <FormGroup controlId="formControlsSelect" >
                                                 <ControlLabel>Diabetes Therapy</ControlLabel>
                                                 <FormControl componentClass="select" placeholder="">
                                                     <option>...</option>
-                                                    <option>Insulin</option>
-                                                    <option>Oral anti-diabetes</option>
-                                                    <option>Both (I ans O)</option>
                                                     <option>Diet</option>
                                                     <option>None</option>
                                                 </FormControl>
                                             </FormGroup>
                                         </Col>
+                                        <Col className="col-md-6">
+                                            <FormGroup
+                                                controlId="formBasicText"
+                                                validationState={this.getValidationState()}
+                                            >
+                                                <ControlLabel>Most recent HbA1c</ControlLabel>
+                                                <FormControl
+                                                    type="text"
+                                                    value={this.state.value}
+                                                    placeholder="00.0"
+                                                    onChange={this.handleChange}
+                                                />
+                                                <FormControl.Feedback />
+                                            </FormGroup>
+                                        </Col>
                                     </Row>
-                                    <input type="submit" value="Submit"/>
+                                    <Row>
+                                        
+                                        <Col className="col-md-6">
+                                            <FormGroup>
+                                                <ControlLabel>Date HbA1C taken</ControlLabel>
+                                                <Datetime
+                                                    inputProps={{ placeholder: "Date HbA1C taken" }}
+                                                    timeFormat={false}
+                                                />
+                                            </FormGroup>
+                                        </Col>
+                                        <Col className="col-md-6">
+                                            <FormGroup>
+                                                <ControlLabel>Date Review</ControlLabel>
+                                                <Datetime
+                                                    inputProps={{ placeholder: "Date Review" }}
+                                                    timeFormat={false}
+                                                />
+                                            </FormGroup>
+                                        </Col>
+                                    </Row>
+                                    <Row>
+                                        <Col className="col-md-6">
+                                            <FormGroup controlId="formControlsSelect" >
+                                                <ControlLabel>Visual Aquity Left</ControlLabel>
+                                                <FormControl componentClass="select" placeholder="" value={this.value}>
+                                                    <option>...</option>
+                                                    <option value='Light Perception' >Light Perception</option>
+                                                    <option value='No Light Perception' >No Light Perception</option>
+                                                    <option value='Not Done' >Not done</option>
+                                                </FormControl>
+                                            </FormGroup>
+                                        </Col>
+                                        <Col className="col-md-6">
+                                            <FormGroup controlId="formControlsSelect" >
+                                                <ControlLabel>Visual Aquity Right</ControlLabel>
+                                                <FormControl componentClass="select" placeholder="" value={this.value}>
+                                                    <option>...</option>
+                                                    <option value='Light Perception' >Light Perception</option>
+                                                    <option value='No Light Perception' >No Light Perception</option>
+                                                    <option value='Not Done' >Not done</option>
+                                                </FormControl>
+                                            </FormGroup>
+                                        </Col>
+                                    </Row>
+                                    <Row>
+                                        <Col className="col-md-6">
+                                            <FormGroup controlId="formControlsSelect" >
+                                                <ControlLabel>Intra Ocular Pressure Left</ControlLabel>
+                                                <FormControl componentClass="select" placeholder="" value={this.value}>
+                                                    <option>...</option>
+                                                    <option value='mmHg' >mmHg</option>
+                                                    <option value='Not Done' >Not done</option>
+                                                </FormControl>
+                                            </FormGroup>
+                                        </Col>
+                                        <Col className="col-md-6">
+                                            <FormGroup controlId="formControlsSelect" >
+                                                <ControlLabel>Intra Ocular Pressure Right</ControlLabel>
+                                                <FormControl componentClass="select" placeholder="" value={this.value}>
+                                                    <option>...</option>
+                                                    <option value='mmHg' >mmHg</option>
+                                                    <option value='Not Done' >Not done</option>
+                                                </FormControl>
+                                            </FormGroup>
+                                        </Col>
+                                    </Row>
+                                    <Row>
+                                        <Col className="col-md-12">
+                                            <FormGroup
+                                                controlId="formBasicText"
+                                                validationState={this.getValidationState()}
+                                            >
+                                                <ControlLabel>Other Occular findings</ControlLabel>
+                                                <FormControl
+                                                 rows="3"
+                                                 componentClass="textarea"
+                            
+                                                    type="textarea"
+                                                    value={this.state.value}
+                                                    placeholder="Other Occular findings"
+                                                    onChange={this.handleChange}
+                                                />
+                                                <FormControl.Feedback />
+                                            </FormGroup>
+                                        </Col>
+                                    </Row>
+                                    <input type="submit" value="Submit" />
                                     <div className="clearfix" />
                                 </form>
                             }

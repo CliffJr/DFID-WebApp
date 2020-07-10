@@ -21,6 +21,7 @@ class PatientDetailsItem extends Component {
         this.onChangeRecentHbA1c = this.onChangeRecentHbA1c.bind(this);
         this.onChangeDateTakenHbA1c = this.onChangeDateTakenHbA1c.bind(this);
         this.onChangeLeftImage1 = this.onChangeLeftImage1.bind(this);
+        this.onChangeyearPatientStudyNumber = this.onChangeyearPatientStudyNumber.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
@@ -33,7 +34,8 @@ class PatientDetailsItem extends Component {
             visualAcuityRight: '',
             recentHbA1c: '',
             dateTakenHbA1c: '',
-            leftImage1: ''
+            leftImage1: '',
+            patientStudyNumber: ''
         }
     }
 
@@ -73,10 +75,13 @@ class PatientDetailsItem extends Component {
         this.setState({ dateTakenHbA1c: date._d })
     }
 
-    onChangeLeftImage1 = (e) =>{
-        this.setState({leftImage1: e.target.file})
+    onChangeLeftImage1 = (e) => {
+        this.setState({ leftImage1: e.target.file })
     }
 
+    onChangeyearPatientStudyNumber = (e) => {
+        this.setState({patientStudyNumber: e.target.value})
+    }
     // To add new employee when user submits the form
     onSubmit = (e) => {
         e.preventDefault();
@@ -115,6 +120,17 @@ class PatientDetailsItem extends Component {
                         content={
                             <form onSubmit={this.onSubmit}>
                                 <FormInputs
+                                        ncols={["col-md-12"]}
+                                        properties={[
+                                            {
+                                                type: "text",
+                                                bsClass: "form-control",
+                                                placeholder: "Name of Health Care Worker",
+                                                disabled: true
+                                            }
+                                        ]}
+                                    />
+                                <FormInputs
                                     ncols={["col-md-6", "col-md-6"]}
                                     properties={[
                                         {
@@ -145,11 +161,11 @@ class PatientDetailsItem extends Component {
                                     ncols={["col-md-6", "col-md-6"]}
                                     properties={[
                                         {
-                                            label: "Patient Identity Number",
+                                            label: "Patient NCD Number",
                                             name: "patientId",
                                             type: "text",
                                             bsClass: "form-control",
-                                            placeholder: "08-05-oa-DFID-000",
+                                            placeholder: "08-05-OA-DFID-0000",
                                             defaultValue: "",
                                             required: true,
                                             value: this.state.patientId,
@@ -157,13 +173,13 @@ class PatientDetailsItem extends Component {
 
                                         },
                                         {
-                                            label: "Year of Diabetes Diagnosis",
-                                            name: "yearOfDiabetes",
+                                            label: "Patient DFID Study Number",
+                                            name: "patientStudyNumber",
                                             bsClass: "form-control",
-                                            placeholder: "YEAR",
+                                            placeholder: "DFID-0000",
                                             defaultValue: "",
-                                            value: this.state.yearOfDiabetes,
-                                            onChange: this.onChangeyearOfDiebetes
+                                            value: this.state.patientStudyNumber,
+                                            onChange: this.onChangeyearPatientStudyNumber
                                         }
                                     ]}
                                 />
@@ -173,119 +189,45 @@ class PatientDetailsItem extends Component {
                                             <ControlLabel>Gender</ControlLabel>
                                             <FormControl componentClass="select" placeholder="" value={this.value} onChange={this.onChangegender}>
                                                 <option>...</option>
-                                                <option value="Female" >FEMALE</option>
                                                 <option value="Male" >MALE</option>
+                                                <option value="Female" >FEMALE</option>
                                             </FormControl>
-                                        </FormGroup>
-                                    </Col>
-                                </Row>
-                                <FormInputs
-                                    ncols={["col-md-6", "col-md-6"]}
-                                    properties={[
-                                        {
-                                            label: "Left Eye Image 1",
-                                            name: "LeftEyeImage1",
-                                            type: "file",
-                                            bsClass: "form-control",
-                                            placeholder: "Upload Image",
-                                            required: true,
-                                            value: this.state.leftImage1,
-                                            onChange: this.onChangeLeftImage1
-                                        },
-                                        {
-                                            label: "Right Eye Image 1",
-                                            name: "RightEyeImage1",
-                                            type: "file",
-                                            bsClass: "form-control",
-                                            placeholder: "Upload Image",
-                                            required: true
-                                        }
-                                    ]}
-                                />
-                                 <FormInputs
-                                    ncols={["col-md-6", "col-md-6"]}
-                                    properties={[
-                                        {
-                                            label: "Left Eye Image 2",
-                                            name: "LeftEyeImage2",
-                                            type: "file",
-                                            bsClass: "form-control",
-                                            placeholder: "Upload Image",
-                                            required: true
-                                        },
-                                        {
-                                            label: "Right Eye Image 2",
-                                            name: "RightEyeImage2",
-                                            type: "file",
-                                            bsClass: "form-control",
-                                            placeholder: "Upload Image",
-                                            required: true
-                                        }
-                                    ]}
-                                />
-                                <Row>
-                                    <Col className="col-md-6">
-                                        <FormGroup controlId="formControlsSelect" >
-                                            <ControlLabel>Visual Acuity Left</ControlLabel>
-                                            <FormControl componentClass="select" placeholder="" value={this.value} onChange={this.onChangeVisualAcuityLeft}>
-                                                <option>...</option>
-                                                <option value='6/6' >6/6</option>
-                                                <option value='6/9' >6/9</option>
-                                                <option value='6/12' >6/12</option>
-                                                <option value='6/18' >6/18</option>
-                                                <option value='6/24' >6/24</option>
-                                                <option value='6/36' >6/36</option>
-                                                <option value='6/60' >6/60</option>
-                                                <option value='3/60' >3/60</option>
-                                                <option value='1/60' >1/60</option>
-                                                <option value='LP' >LP</option>
-                                                <option value='NLP' >NLP</option>
-                                            </FormControl>
-                                        </FormGroup>
-                                    </Col>
-                                    <Col className="col-md-6">
-                                        <FormGroup controlId="formControlsSelect" >
-                                            <ControlLabel>Visual Acuity Right</ControlLabel>
-                                            <FormControl componentClass="select" placeholder="" value={this.value} onChange={this.onChangeVisualAcuityRight}>
-                                                <option >...</option>
-                                                <option value='6/6' >6/6</option>
-                                                <option value='6/9' >6/9</option>
-                                                <option value='6/12' >6/12</option>
-                                                <option value='6/18' >6/18</option>
-                                                <option value='6/24' >6/24</option>
-                                                <option value='6/36' >6/36</option>
-                                                <option value='6/60' >6/60</option>
-                                                <option value='3/60' >3/60</option>
-                                                <option value='1/60' >1/60</option>
-                                                <option value='LP' >LP</option>
-                                                <option value='NLP' >NLP</option>
-                                            </FormControl>
-                                        </FormGroup>
-                                    </Col>
-                                </Row>
-                                <Row>
-                                    <Col className="col-md-6">
-                                        <FormGroup
-                                            controlId="formBasicText"
-                                        >
-                                            <ControlLabel>Recent HbA1c</ControlLabel>
-                                            <FormControl
-                                                type="text"
-                                                placeholder="Recent HbA1c"
-                                                value={this.state.recentHbA1c}
-                                                onChange={this.onChangeRecentHbA1c}
-                                            />
-                                            <FormControl.Feedback />
                                         </FormGroup>
                                     </Col>
                                     <Col className="col-md-6">
                                         <FormGroup>
-                                            <ControlLabel>Date taken HbA1c</ControlLabel>
+                                            <ControlLabel>Date Of Birth</ControlLabel>
                                             <Datetime
                                                 type="date"
                                                 inputProps={{ placeholder: "Date Picker" }}
                                                 timeFormat={false}
-                                                onChange={this.onChangeDateTakenHbA1c}
+                                                onChange={this.onChangeDateOfBirth}
+                                            />
+                                        </FormGroup>
+                                    </Col>
+                                </Row>
+                               
+                                <Row>
+                                    <Col className="col-md-6">
+                                        <FormGroup controlId="formControlsSelect" >
+                                            <ControlLabel>Type of Diabetes</ControlLabel>
+                                            <FormControl componentClass="select" placeholder="" value={this.value} onChange={this.onChangeTypeOfDiabetes}>
+                                                <option>...</option>
+                                                <option value='DM1' >DM 1</option>
+                                                <option value='DM2' >DM 2</option>
+                                                <option value='Gestational' >Gestational</option>
+                                                <option value='Other' >Other</option>
+                                            </FormControl>
+                                        </FormGroup>
+                                    </Col>
+                                    <Col className="col-md-6">
+                                        <FormGroup>
+                                            <ControlLabel>Year of DM diagnosis</ControlLabel>
+                                            <Datetime
+                                                type="date"
+                                                inputProps={{ placeholder: "Date Picker" }}
+                                                timeFormat={false}
+                                                onChange={this.onChangeYearOfDmDiagnosis}
                                             />
                                         </FormGroup>
                                     </Col>
