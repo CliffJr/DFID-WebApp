@@ -1,63 +1,71 @@
-import React, { Component } from 'react';
-import { Carousel } from 'react-bootstrap';
-import IM2783RE from '../assets/img/IM2783RE.JPG';
+import React from "react";
+import { Row, Col, FormGroup, ControlLabel } from 'react-bootstrap';
+import { Card } from "components/Card/Card.jsx";
+import ReactImageZoom from 'react-image-zoom';
+import IM2783RE from "../assets/img/IM2783RE.JPG";
 
-class ImageDisplay extends Component {
-  constructor(props, context) {
-    super(props, context);
-
-    this.handleSelect = this.handleSelect.bind(this);
-
-    this.state = {
-      index: 0,
-      direction: null,
-      slide: false
-    };
-  }
-
-  handleSelect(selectedIndex, e) {
-    this.setState({
-      index: selectedIndex,
-      direction: e.direction
-    });
-  }
-
-  render() {
-    const { index, direction } = this.state;
-
-    return (
-      <Carousel
-        activeIndex={index}
-        direction={direction}
-        onSelect={this.handleSelect}
-      >
-
-        <Carousel.Item >
-          <img width={900} height={600} alt="900x500" src={IM2783RE} />
-          <Carousel.Caption>
-            <h3>First slide label</h3>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item>
-          <img width={900} height={600} alt="900x500" src={IM2783RE} />
-          <Carousel.Caption>
-            <h3>Second slide label</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item>
-          <img width={900} height={500} alt="900x500" src={IM2783RE} />
-          <Carousel.Caption>
-            <h3>Third slide label</h3>
-            <p>
-              Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-            </p>
-          </Carousel.Caption>
-        </Carousel.Item>
-      </Carousel>
-    );
-  }
+const ImageDisplay = (props) => {
+  const propss = { width: 600, height: 500, zoomWidth: 800, img: IM2783RE };
+  return (
+    <Row>
+      <Col md={12}>
+        <Col md={12}>
+          <Card
+            title="Patients Eye Images"
+            className="content-center"
+            content={
+              <>
+              <Row>
+                <Col className="col-md-6">
+                  <FormGroup controlId="formControlsSelect" >
+                    <ControlLabel>Left Eye Image 1</ControlLabel>
+                    <ReactImageZoom {...propss} />
+                  </FormGroup>
+                </Col>
+                <Col className="col-md-6">
+                  <ControlLabel>Scaled Image (Left Eye)</ControlLabel>
+                </Col>
+              </Row>
+              <Row>
+                <Col className="col-md-6">
+                  <FormGroup controlId="formControlsSelect" >
+                    <ControlLabel>Left Eye Image 2</ControlLabel>
+                    <ReactImageZoom {...propss} />
+                  </FormGroup>
+                </Col>
+                <Col className="col-md-6">
+                  <ControlLabel>Scaled Image (Left Eye)</ControlLabel>
+                </Col>
+              </Row>
+              <Row>
+                <Col className="col-md-6">
+                  <FormGroup controlId="formControlsSelect" >
+                    <ControlLabel>Right Eye Image 1</ControlLabel>
+                    <ReactImageZoom {...propss} />
+                  </FormGroup>
+                </Col>
+                <Col className="col-md-6">
+                  <ControlLabel>Scaled Image (Right Eye)</ControlLabel>
+                </Col>
+              </Row>
+              <Row>
+                <Col className="col-md-6">
+                  <FormGroup controlId="formControlsSelect" >
+                    <ControlLabel>Right Eye Image 2</ControlLabel>
+                    <ReactImageZoom {...propss} />
+                  </FormGroup>
+                </Col>
+                <Col className="col-md-6">
+                  <ControlLabel>Scaled Image (Right Eye)</ControlLabel>
+                </Col>
+              </Row>
+            </>
+            }
+          />
+        </Col>
+      </Col>
+    </Row>
+  );
 }
 
 export default ImageDisplay;
