@@ -83,6 +83,7 @@ const getButtonsState = (indx, length) => {
 }
 
 export default function MultiStep(props) {
+ 
   let showNavigation = true
   if (props.showNavigation && props.showNavigation) showNavigation = props.showNavigation
 
@@ -136,7 +137,7 @@ export default function MultiStep(props) {
               onClick={previous}
             >
               Previous
-                            </Button>
+           </Button>
 
           </Col>
           <Col md={2} mdOffset={3} className="text-center">
@@ -145,7 +146,7 @@ export default function MultiStep(props) {
               onClick={next}
             >
               Next
-        </Button>
+            </Button>
           </Col>
           <br />
         </Row>

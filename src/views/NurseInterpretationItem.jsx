@@ -1,12 +1,9 @@
-import React, { Component } from 'react';
-
+import React from 'react';
 import { Row, Col, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 import { Card } from "components/Card/Card.jsx";
 import { FormInputs } from 'components/FormInputs/FormInputs.jsx'
 
-class NurseInterpretationItem extends Component {
-
-    render() {
+const NurseInterpretationItem = () => {
 
         return (
             <Row>
@@ -18,7 +15,6 @@ class NurseInterpretationItem extends Component {
                             content={
                                 <form>
                                     <h5>Eye Fundoscopy</h5>
-
                                     <Row>
                                         <Col className="col-md-6">
                                             <FormGroup controlId="formControlsSelect" >
@@ -30,7 +26,7 @@ class NurseInterpretationItem extends Component {
                                                 </FormControl>
                                             </FormGroup>
                                         </Col>
-                              
+
                                     </Row>
                                     <h5>Intra Ocular Pressure</h5>
                                     <Row>
@@ -155,6 +151,5 @@ class NurseInterpretationItem extends Component {
 
         );
     }
-}
 
 export default NurseInterpretationItem;

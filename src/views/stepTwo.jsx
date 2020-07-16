@@ -1,140 +1,131 @@
-import React,{useState} from react;
-import { render } from "react-dom";
+import React, { useState } from 'react';
+import { Row, Col, FormGroup, ControlLabel } from 'react-bootstrap';
+import { Card } from "components/Card/Card.jsx";
+import Datetime from 'react-datetime';
+import 'react-datetime/css/react-datetime.css';
 
-const stepTwo  = () =>{
+import OptionsSignsDRDrop from './optionSignsDRDrop';
+import ItemPatientForm from "./ItemPatientForm";
 
-    return (
-        <Row>
-            <Col md={12}>
-                <Col md={12}>
-                    <Card
-                        title="Image Transfer"
-                        content={
-                            <form>
-                                <Row>
-                                <FormInputs
-                                    ncols={["col-md-6", "col-md-6"]}
-                                    properties={[
-                                        {
-                                            label: "Left Eye Image 1",
-                                            name: "LeftEyeImage1",
-                                            type: "file",
-                                            bsClass: "form-control",
-                                            placeholder: "Upload Image",
-                                            required: true,
-                                            value: this.state.leftImage1,
-                                            onChange: this.onChangeLeftImage1
-                                        },
-                                        {
-                                            label: "Right Eye Image 1",
-                                            name: "RightEyeImage1",
-                                            type: "file",
-                                            bsClass: "form-control",
-                                            placeholder: "Upload Image",
-                                            value: this.state.RightImage1,
-                                            required: true
-                                        }
-                                    ]}
-                                />
-                                <FormInputs
-                                    ncols={["col-md-6", "col-md-6"]}
-                                    properties={[
-                                        {
-                                            label: "Left Eye Image 2",
-                                            name: "LeftEyeImage2",
-                                            type: "file",
-                                            bsClass: "form-control",
-                                            placeholder: "Upload Image",
-                                            required: true,
-                                            value: this.state.leftImage2
-                                        },
-                                        {
-                                            label: "Right Eye Image 2",
-                                            name: "RightEyeImage2",
-                                            type: "file",
-                                            bsClass: "form-control",
-                                            placeholder: "Upload Image",
-                                            required: true,
-                                            value: this.state.RightImage2
-                                        }
-                                    ]}
-                                />
-                                </Row> 
-                                <Row>
-                                    <Col className="col-md-6">
-                                        <FormGroup controlId="formControlsSelect" >
-                                            <ControlLabel>Visual Aquity Left</ControlLabel>
-                                            <FormControl componentClass="select" placeholder="" value={this.value}>
-                                                <option>...</option>
-                                                <option value='Light Perception' >Light Perception</option>
-                                                <option value='No Light Perception' >No Light Perception</option>
-                                                <option value='Not Done' >Not done</option>
-                                            </FormControl>
-                                        </FormGroup>
-                                    </Col>
-                                    <Col className="col-md-6">
-                                        <FormGroup controlId="formControlsSelect" >
-                                            <ControlLabel>Visual Aquity Right</ControlLabel>
-                                            <FormControl componentClass="select" placeholder="" value={this.value}>
-                                                <option>...</option>
-                                                <option value='Light Perception' >Light Perception</option>
-                                                <option value='No Light Perception' >No Light Perception</option>
-                                                <option value='Not Done' >Not done</option>
-                                            </FormControl>
-                                        </FormGroup>
-                                    </Col>
-                                </Row>
-                                <Row>
-                                    <Col className="col-md-6">
-                                        <FormGroup controlId="formControlsSelect" >
-                                            <ControlLabel>Intra Ocular Pressure Left</ControlLabel>
-                                            <FormControl componentClass="select" placeholder="" value={this.value}>
-                                                <option>...</option>
-                                                <option value='mmHg' >mmHg</option>
-                                                <option value='Not Done' >Not done</option>
-                                            </FormControl>
-                                        </FormGroup>
-                                    </Col>
-                                    <Col className="col-md-6">
-                                        <FormGroup controlId="formControlsSelect" >
-                                            <ControlLabel>Intra Ocular Pressure Right</ControlLabel>
-                                            <FormControl componentClass="select" placeholder="" value={this.value}>
-                                                <option>...</option>
-                                                <option value='mmHg' >mmHg</option>
-                                                <option value='Not Done' >Not done</option>
-                                            </FormControl>
-                                        </FormGroup>
-                                    </Col>
-                                </Row>
-                                <Row>
-                                    <Col className="col-md-12">
-                                        <FormGroup
-                                            controlId="formBasicText"
-                                            validationState={this.getValidationState()}
-                                        >
-                                            <ControlLabel>Other Occular findings</ControlLabel>
-                                            <FormControl
-                                             rows="3"
-                                             componentClass="textarea"
-                        
-                                                type="textarea"
-                                                value={this.state.value}
-                                                placeholder="Other Occular findings"
-                                                onChange={this.handleChange}
-                                            />
-                                            <FormControl.Feedback />
-                                        </FormGroup>
-                                    </Col>
-                                </Row>
-                                <input type="submit" value="Submit" />
-                                <div className="clearfix" />
-                            </form>
-                        }
-                    />
+const StepTwo = ({ setForm, formData, navigation }) => {
+  //uploading the images
+  const [pictureR1, setPictureR1] = useState(null);
+  const [pictureR2, setPictureR2] = useState(null);
+  const [pictureL1, setPictureL1] = useState(null);
+  const [pictureL2, setPictureL2] = useState(null);
+
+  const [dateImagesTaken, setDateImagesTaken] = useState(new Date());
+  const [dateElectronicReferal, setDateElectronicReferal] = useState(new Date());
+
+  const { additionalCommentsPatient, optionsSignsDR } = formData;
+  const { previous, next } = navigation;
+
+  const onChangeImageUploadR1 = e => {
+    if (e.target.files[0]) {
+      setPictureR1(e.target.files[0]);
+    }
+  };
+
+  const onChangeImageUploadR2 = e => {
+    if (e.target.files[0]) {
+      setPictureR2(e.target.files[0]);
+    }
+  };
+
+  const onChangeImageUploadL1 = e => {
+    if (e.target.files[0]) {
+      setPictureL1(e.target.files[0]);
+    }
+  };
+
+  const onChangeImageUploadL2 = e => {
+    if (e.target.files[0]) {
+      setPictureL2(e.target.files[0]);
+    }
+  };
+
+  return (
+    <Row>
+      <Col md={12} className="text-left">
+        <Card
+          title="Patient Eye Details"
+          content={
+            <>
+
+              <Row>
+                <Col className="col-md-6">
+                  <input type="file" accept="image/*" onChange={onChangeImageUploadR1} value={pictureR1} />
                 </Col>
-            </Col>
-        </Row>
+                <Col className="col-md-6">
+                  <input type="file" accept="image/*" onChange={onChangeImageUploadR2} value={pictureR2} />
+                </Col>
+              </Row>
+              <Row>
+                <Col className="col-md-6">
+                  <input type="file" accept="image/*" multiple="false" onChange={onChangeImageUploadL1} value={pictureL1} />
+                </Col>
+                <Col className="col-md-6">
+                  <input type="file" accept="image/*" multiple="false" onChange={onChangeImageUploadL2} value={pictureL2} />
+                </Col>
+              </Row>
 
-    );
+              <Row>
+                <Col className="col-md-12">
+                  <FormGroup controlId="formControlsSelect" >
+                    <ControlLabel>Signs Of DR</ControlLabel>
+                    <OptionsSignsDRDrop className="col-md-12" name="optionsSignsDR" value={optionsSignsDR} onChange={setForm} />
+                  </FormGroup>
+                </Col>
+                <Col className="col-md-12">
+                  <FormGroup>
+                    <ControlLabel>Date Images Taken</ControlLabel>
+                    <Datetime
+                      type="date"
+                      inputProps={{ placeholder: "date images taken" }}
+                      timeFormat={false}
+                      selected={dateImagesTaken}
+                      onChange={dateImagesTaken => setDateImagesTaken(dateImagesTaken)}
+                    />
+                  </FormGroup>
+                </Col>
+                <Col className="col-md-12">
+                  <FormGroup>
+                    <ControlLabel>Date of Electronic Referal</ControlLabel>
+                    <Datetime
+                      type="date"
+                      inputProps={{ placeholder: "date of electronic referal" }}
+                      timeFormat={false}
+                      selected={dateElectronicReferal}
+                      onChange={dateElectronicReferal => setDateElectronicReferal(dateElectronicReferal)}
+                    />
+                  </FormGroup>
+                </Col>
+                <Col className="col-md-12">
+                  <ControlLabel>Additional Comments</ControlLabel>
+                  <ItemPatientForm
+                    className="col-md-12"
+                    rows="10"
+                    componentClass="textarea"
+                    type="text"
+                    placeholder="additional comments"
+                    value={additionalCommentsPatient}
+                    onChange={setForm}
+                  />
+                </Col>
+              </Row>
+              <div className="clearfix" />
+              <div>
+                <button onClick={previous}>Previous</button>
 
+                <button onClick={next}>Next</button>
+              </div>
+              <div className="clearfix" />
+            </>
+          }
+        />
+      </Col>
+    </Row>
+  );
 }
+
+export default StepTwo;

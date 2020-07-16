@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Row, Col, FormGroup, ControlLabel } from 'react-bootstrap';
 import { Card } from "components/Card/Card.jsx";
@@ -6,6 +7,7 @@ import IM2783RE from "../assets/img/IM2783RE.JPG";
 
 const ImageDisplay = (props) => {
   const propss = { width: 600, height: 500, zoomWidth: 750, img: IM2783RE };
+
   return (
     <Row>
       <Col md={12}>
