@@ -3,24 +3,26 @@ import { Row, Col, FormGroup, ControlLabel } from 'react-bootstrap';
 import { Card } from "components/Card/Card.jsx";
 import Datetime from 'react-datetime';
 
-import DatePicker from "react-datepicker";
+//import DatePicker from "react-datepicker";
+import { DatePicker, DatePickerInput } from 'rc-datepicker';
+import 'rc-datepicker/lib/style.css';
 
-import "react-datepicker/dist/react-datepicker.css";
+//import "react-datepicker/dist/react-datepicker.css";
 
 
 import ItemPatientForm from "./ItemPatientForm";
 import OptionsDrop from "./optionDrop";
 import OptionsTypeDiabetesDrop from './optionTypeDiabetesDrop';
 
-const StepOne = ({ setForm, formData, navigation }) => {
 
-  const [dobPatient, setDobPatient] = useState(new Date());
+const StepOne = ({ setForm, dobDate, setDobDate, formData, ...props }) => {
+
+  //const {dob} = dobDate;
+
   const [yearDMPatient, setYearDMPatient] = useState(new Date());
 
-  const { firstnamePatient, lastnamePatient, ncdNumberPatient, dfidStudyNumberPatient, optionsGender, optionTypeDiabetes,ts } = formData;
+  const { firstnamePatient, lastnamePatient, ncdNumberPatient, dfidStudyNumberPatient, optionsGender, optionTypeDiabetes } = formData;
   
-  const { next } = navigation;
-
   return (
     < div className="form">
       <Row>
@@ -95,21 +97,34 @@ const StepOne = ({ setForm, formData, navigation }) => {
 
                 <Row>
                   <Col className="col-md-6">
-                    <ControlLabel>Gender</ControlLabel>
+            <ControlLabel>Gender  </ControlLabel>
                     <OptionsDrop className="col-md-12" name="optionsGender" value={optionsGender} onChange={setForm} />
                   </Col>
                   <Col className="col-md-6">
-            <ControlLabel>Date Of Birth {`${ dobPatient}`}  </ControlLabel>
-                    <DatePicker
-                      // className="col-md-12"
-                      // type="text"
-                      // placeholder={"date of birth"}
-                      dateFormat="yyyy/MM/dd"
-                      selected={dobPatient}
-                      //name="dobPatient"
-                      //value={dobPatient}
-                      onChange={date => setDobPatient(date)}
-                    />
+
+
+
+            <ControlLabel>Date Of Birth </ControlLabel>
+
+
+            <DatePickerInput
+               name="dobDate"
+               placeholder={dobDate}
+               selected={dobDate}
+               onChange={dobDate => setDobDate(dobDate)}
+               dateFormat="MM-dd-yyyy"
+ 
+    />
+
+            {/* <DatePicker
+              name="dobDate"
+              className={"form-control"}
+              selected={dobDate}
+              onChange={dobDate => setDobDate(dobDate)}
+              dateFormat="MM-dd-yyyy"
+            /> */}
+
+
                   </Col>
                 </Row>
 
@@ -132,10 +147,17 @@ const StepOne = ({ setForm, formData, navigation }) => {
                     </FormGroup>
                   </Col>
                 </Row>
-                <div>
+
+<div className="jumbotron">
+                <Row>
+                <Col className="col-md-2"><button onClick={props.nextStep}>Next Step</button></Col>
+              </Row>
+</div>            
+
+                {/* <div>
                   <button onClick={next}>Next</button>
                 </div>
-                <div className="clearfix" />
+                <div className="clearfix" /> */}
               </>
             }
           />

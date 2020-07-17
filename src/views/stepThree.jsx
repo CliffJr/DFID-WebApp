@@ -10,7 +10,7 @@ import OptionsDiabetesTherapyDrop from './optionDiabetesTherapyDrop';
 import OptionsVisualAquityDrop from './optionVisualAquityDrop';
 import OptionsIntraOcularPressureDrop from './optionIntraOcularPressureDrop';
 
-const StepThree = ({ setForm, formData, navigation }) => {
+const StepThree = ({ setForm, formData, ...props }) => {
 
   const [dateElectronicReferal, setDateElectronicReferal] = useState(new Date());
   const [dateImagesTaken, setDateImagesTaken] = useState(new Date());
@@ -19,7 +19,6 @@ const StepThree = ({ setForm, formData, navigation }) => {
 
   const { optionsSymptoms, otherSymptoms, optionsDiabetesTherapy, mostRecentHbA1c, optionsVisualAquity, optionsIntraOcularPressure, otherOccularFindings } = formData;
 
-  const { previous, next } = navigation;
 
   return (
     <Row>
@@ -152,14 +151,14 @@ const StepThree = ({ setForm, formData, navigation }) => {
                     />
                   </Col>
                 </Row>
+<div className="jumbotron">
+                <Row>
+                <Col className="col-md-2"><button onClick={props.previousStep}>Previous Step</button></Col>
+                <Col className="col-md-2"><button onClick={props.nextStep}>Next Step</button></Col>
+              </Row>
+</div>  
 
-                <div className="clearfix" />
-                <div>
-                  <button onClick={previous}>Previous</button>
-
-                  <button onClick={next}>Next</button>
-                </div>
-                <div className="clearfix" />
+        
               </>
             }
           />

@@ -6,7 +6,7 @@ import 'react-datetime/css/react-datetime.css';
 import "./stepOne";
 
 
-const ReviewNewPatientDetails = ({ setForm, formData, navigation }) => {
+const ReviewNewPatientDetails = ({ setForm, dobDate,  setDobDate, formData, ...props }) => {
 
     const {
         firstnamePatient,
@@ -18,7 +18,6 @@ const ReviewNewPatientDetails = ({ setForm, formData, navigation }) => {
         dobPatient
     } = formData;
 
-    const { go } = navigation;
 
     return (
         <Row>
@@ -32,7 +31,7 @@ const ReviewNewPatientDetails = ({ setForm, formData, navigation }) => {
                                     <Card>
                                         <Card.Header>>Patient Details</Card.Header>
                                         <Card.Body>
-                                            <Card.Title><Button variant="primary" onClick={() => go("stepOne")}>Edit</Button></Card.Title>
+                                            {/* <Card.Title><Button variant="primary" onClick={() => go("stepOne")}>Edit</Button></Card.Title> */}
                                             <Card.Text>
                                                     First name: {`${firstnamePatient}`},<br/>
                                                     Last Name: {`${lastnamePatient}`}, <br/>
@@ -51,17 +50,25 @@ const ReviewNewPatientDetails = ({ setForm, formData, navigation }) => {
                             <Row>
                                 <Col className="col-md-6">
                                     <div>
-                                    <h4>Patient Details: <button onClick={() => go("stepTwo")}>Edit</button> </h4>
+                                    {/* <h4>Patient Details: <button onClick={() => go("stepTwo")}>Edit</button> </h4> */}
                                     First name: {`${firstnamePatient}`},<br/>
                                                     Last Name: {`${lastnamePatient}`}, <br/>
                                                     NCD Number Patient: {`${ncdNumberPatient}`},<br/>
                                                     DFID Study Number : {`${dfidStudyNumberPatient}`},<br/>
                                                     Gender: {`${optionsGender}`},<br/>
                                                     Type of Diabetes: {`${ optionTypeDiabetes}`},<br/>
-                                                    DOB: {`${ dobPatient}`} 
+                                                    DOB: {`${ dobDate}`} ,<br/>
+
                                 </div>
                                 </Col>
                             </Row>
+<div className="jumbotron">
+                <Row>
+                <Col className="col-md-2"><button onClick={props.previousStep}>Previous Step</button></Col>
+                <Col className="col-md-2"><button onClick={props.nextStep}>Next Step</button></Col>
+                <Col className="col-md-2"><button onClick={props.firstStep}>First Step</button></Col>
+              </Row>
+</div>  
 
                         </>
                     }
