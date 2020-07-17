@@ -7,7 +7,7 @@ import 'react-datetime/css/react-datetime.css';
 import OptionsSignsDRDrop from './optionSignsDRDrop';
 import ItemPatientForm from "./ItemPatientForm";
 
-const StepTwo = ({ setForm, formData, navigation }) => {
+const StepTwo = ({ setForm, formData, ...props }) => {
   //uploading the images
   const [pictureR1, setPictureR1] = useState(null);
   const [pictureR2, setPictureR2] = useState(null);
@@ -18,7 +18,7 @@ const StepTwo = ({ setForm, formData, navigation }) => {
   const [dateElectronicReferal, setDateElectronicReferal] = useState(new Date());
 
   const { additionalCommentsPatient, optionsSignsDR } = formData;
-  const { previous, next } = navigation;
+  // const { previous, next } = navigation;
 
   const onChangeImageUploadR1 = e => {
     if (e.target.files[0]) {
@@ -113,13 +113,23 @@ const StepTwo = ({ setForm, formData, navigation }) => {
                   />
                 </Col>
               </Row>
-              <div className="clearfix" />
+
+
+              <div className="jumbotron">
+                <Row>
+                <Col className="col-md-2"><button onClick={props.previousStep}>Previous Step</button></Col>
+                <Col className="col-md-2"><button onClick={props.nextStep}>Next Step</button></Col>
+              </Row>
+</div> 
+
+
+              {/* <div className="clearfix" />
               <div>
                 <button onClick={previous}>Previous</button>
 
                 <button onClick={next}>Next</button>
               </div>
-              <div className="clearfix" />
+              <div className="clearfix" /> */}
             </>
           }
         />
