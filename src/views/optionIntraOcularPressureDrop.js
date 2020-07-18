@@ -1,6 +1,7 @@
 import React from "react";
 
 const optionsIntraOcularPressure = [
+    ["", ""],
     ["mmHg", "mmHg"],
     ["Not Done", "Not Done"]
 ];

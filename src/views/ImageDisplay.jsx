@@ -17,51 +17,53 @@ const ImageDisplay = (props) => {
             className="content-center"
             content={
               <>
-              <Row>
-                <Col className="col-md-6">
-                  <FormGroup controlId="formControlsSelect" >
-                    <ControlLabel>Left Eye Image 1</ControlLabel>
-                    <ReactImageZoom {...propss} />
-                  </FormGroup>
-                </Col>
-                <Col className="col-md-6">
-                  <ControlLabel>Scaled Image (Left Eye)</ControlLabel>
-                </Col>
-              </Row>
-              <Row>
-                <Col className="col-md-6">
-                  <FormGroup controlId="formControlsSelect" >
-                    <ControlLabel>Left Eye Image 2</ControlLabel>
-                    <ReactImageZoom {...propss} />
-                  </FormGroup>
-                </Col>
-                <Col className="col-md-6">
-                  <ControlLabel>Scaled Image (Left Eye)</ControlLabel>
-                </Col>
-              </Row>
-              <Row>
-                <Col className="col-md-6">
-                  <FormGroup controlId="formControlsSelect" >
-                    <ControlLabel>Right Eye Image 1</ControlLabel>
-                    <ReactImageZoom {...propss} />
-                  </FormGroup>
-                </Col>
-                <Col className="col-md-6">
-                  <ControlLabel>Scaled Image (Right Eye)</ControlLabel>
-                </Col>
-              </Row>
-              <Row>
-                <Col className="col-md-6">
-                  <FormGroup controlId="formControlsSelect" >
-                    <ControlLabel>Right Eye Image 2</ControlLabel>
-                    <ReactImageZoom {...propss} />
-                  </FormGroup>
-                </Col>
-                <Col className="col-md-6">
-                  <ControlLabel>Scaled Image (Right Eye)</ControlLabel>
-                </Col>
-              </Row>
-            </>
+                <Row>
+                  <Col className="col-md-6">
+                    <FormGroup controlId="formControlsSelect" >
+                      <ControlLabel>Right Eye Image 1</ControlLabel>
+                      <ReactImageZoom {...propss} />
+                    </FormGroup>
+                  </Col>
+                  <Col className="col-md-6">
+                    <ControlLabel>Scaled Image (Right Eye)</ControlLabel>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col className="col-md-6">
+                    <FormGroup controlId="formControlsSelect" >
+                      <ControlLabel>Right Eye Image 2</ControlLabel>
+                      <ReactImageZoom {...propss} />
+                    </FormGroup>
+                  </Col>
+                  <Col className="col-md-6">
+                    <ControlLabel>Scaled Image (Right Eye)</ControlLabel>
+                  </Col>
+                </Row>
+
+                <Row>
+                  <Col className="col-md-6">
+                    <FormGroup controlId="formControlsSelect" >
+                      <ControlLabel>Left Eye Image 1</ControlLabel>
+                      <ReactImageZoom {...propss} />
+                    </FormGroup>
+                  </Col>
+                  <Col className="col-md-6">
+                    <ControlLabel>Scaled Image (Left Eye)</ControlLabel>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col className="col-md-6">
+                    <FormGroup controlId="formControlsSelect" >
+                      <ControlLabel>Left Eye Image 2</ControlLabel>
+                      <ReactImageZoom {...propss} />
+                    </FormGroup>
+                  </Col>
+                  <Col className="col-md-6">
+                    <ControlLabel>Scaled Image (Left Eye)</ControlLabel>
+                  </Col>
+                </Row>
+
+              </>
             }
           />
         </Col>

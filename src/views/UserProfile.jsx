@@ -46,7 +46,7 @@ class UserProfile extends Component {
                       ]}
                     />
                     <FormInputs
-                      ncols={["col-md-16"]}
+                      ncols={["col-md-6", "col-md-6"]}
                       properties={[
                         {
                           label: "Email",
@@ -54,7 +54,15 @@ class UserProfile extends Component {
                           bsClass: "form-control",
                           placeholder: "xyz@gmail.com",
                           defaultValue: "",
-                        }
+                        },
+                        {
+                          label: "Phone",
+                          type: "text",
+                          bsClass: "form-control",
+                          placeholder: "+263 773 123 456",
+                          defaultValue: ""
+                        },
+
                       ]}
                     />
 

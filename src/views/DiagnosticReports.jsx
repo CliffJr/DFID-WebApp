@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { TabContainer, Tabs, Tab } from 'react-bootstrap';
 
 import ImageDisplay from './ImageDisplay';
-import NurseInterpretationItem from './NurseInterpretationItem';
+//import NurseInterpretationItem from './NurseInterpretationItem';
 import DoctorDiagnosisItem from './DoctorDiagnosisItem';
 import NewPatientsContainer from './NewPatientsContainer';
 import PatientReferalDisplay from './PatientDetailsDisplay';
@@ -38,9 +38,9 @@ class DiagnosticReports extends Component {
           <Tab eventKey={3} title="Eye Images">
             <ImageDisplay />
           </Tab>
-          <Tab eventKey={4} title="Nurse Interpretation" >
+          {/* <Tab eventKey={4} title="Nurse Interpretation" >
             <NurseInterpretationItem />
-          </Tab>
+          </Tab> */}
           <Tab eventKey={5} title="Recommendation">
             <DoctorDiagnosisItem />
           </Tab>

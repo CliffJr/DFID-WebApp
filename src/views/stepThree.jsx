@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Row, Col, FormGroup, ControlLabel } from 'react-bootstrap';
 import { Card } from "components/Card/Card.jsx";
-import Datetime from 'react-datetime';
-import 'react-datetime/css/react-datetime.css';
+
+import { DatePickerInput } from 'rc-datepicker';
+import 'rc-datepicker/lib/style.css';
 
 import OptionsSymptomsDrop from './optionSymptomsDrop';
 import ItemPatientForm from './ItemPatientForm';
@@ -10,12 +11,9 @@ import OptionsDiabetesTherapyDrop from './optionDiabetesTherapyDrop';
 import OptionsVisualAquityDrop from './optionVisualAquityDrop';
 import OptionsIntraOcularPressureDrop from './optionIntraOcularPressureDrop';
 
-const StepThree = ({ setForm, formData, ...props }) => {
+const StepThree = ({ setForm, formData, setDateHbA1ctaken, dateHbA1ctaken, dateReviewNurse, setDateReviewNurse, setDateImagesTaken, dateImagesTaken, setDateElectronicReferal, dateElectronicReferal, ...props }) => {
 
-  const [dateElectronicReferal, setDateElectronicReferal] = useState(new Date());
-  const [dateImagesTaken, setDateImagesTaken] = useState(new Date());
-  const [dateHbA1ctaken, setDateHbA1ctaken] = useState(new Date());
-  const [dateReviewNurse, setDateReviewNurse] = useState(new Date());
+
 
   const { optionsSymptoms, otherSymptoms, optionsDiabetesTherapy, mostRecentHbA1c, optionsVisualAquity, optionsIntraOcularPressure, otherOccularFindings } = formData;
 
@@ -32,9 +30,9 @@ const StepThree = ({ setForm, formData, ...props }) => {
                   <Col className="col-md-6">
                     <FormGroup>
                       <ControlLabel>Date of electronic Referral</ControlLabel>
-                      <Datetime
-                        inputProps={{ placeholder: "date of electronic Referal" }}
-                        timeFormat={false}
+                      <DatePickerInput
+                        name="dateElectronicReferal"
+                        dateFormat="MM-dd-yyyy"
                         selected={dateElectronicReferal}
                         onChange={dateElectronicReferal => setDateElectronicReferal(dateElectronicReferal)}
                       />
@@ -43,10 +41,9 @@ const StepThree = ({ setForm, formData, ...props }) => {
                   <Col className="col-md-6">
                     <FormGroup>
                       <ControlLabel>Date Images Taken</ControlLabel>
-                      <Datetime
-                        className="col-md-12"
-                        inputProps={{ placeholder: "Date Picker" }}
-                        timeFormat={false}
+                      <DatePickerInput
+                        name="dateImagesTaken"
+                        dateFormat="MM-dd-yyyy"
                         selected={dateImagesTaken}
                         onChange={dateImagesTaken => setDateImagesTaken(dateImagesTaken)}
                       />
@@ -93,20 +90,18 @@ const StepThree = ({ setForm, formData, ...props }) => {
                 <Row>
                   <Col className="col-md-6">
                     <ControlLabel>Date HbA1C taken</ControlLabel>
-                    <Datetime
-                      type="date"
-                      inputProps={{ placeholder: "Date HbA1C taken" }}
-                      timeFormat={false}
+                    <DatePickerInput
+                      name="dateHbA1ctaken"
+                      dateFormat="MM-dd-yyyy"
                       selected={dateHbA1ctaken}
                       onChang={dateHbA1ctaken => setDateHbA1ctaken(dateHbA1ctaken)}
                     />
                   </Col>
                   <Col className="col-md-6">
                     <ControlLabel>Date Review</ControlLabel>
-                    <Datetime
-                      type="date"
-                      inputProps={{ placeholder: "Date Review" }}
-                      timeFormat={false}
+                    <DatePickerInput
+                      name="dateReviewNurse"
+                      dateFormat="MM-dd-yyyy"
                       selected={dateReviewNurse}
                       onChange={dateReviewNurse => setDateReviewNurse(dateReviewNurse)}
                     />
@@ -151,14 +146,14 @@ const StepThree = ({ setForm, formData, ...props }) => {
                     />
                   </Col>
                 </Row>
-<div className="jumbotron">
-                <Row>
-                <Col className="col-md-2"><button onClick={props.previousStep}>Previous Step</button></Col>
-                <Col className="col-md-2"><button onClick={props.nextStep}>Next Step</button></Col>
-              </Row>
-</div>  
+                
+                <div className="jumbotron">
+                  <Row>
+                    <Col className="col-md-2"><button onClick={props.previousStep}>Previous Step</button></Col>
+                    <Col className="col-md-2"><button onClick={props.nextStep}>Next Step</button></Col>
+                  </Row>
+                </div>
 
-        
               </>
             }
           />

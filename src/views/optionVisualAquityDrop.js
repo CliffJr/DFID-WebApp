@@ -1,6 +1,7 @@
 import React from "react";
 
 const optionsVisualAquity = [
+    ["", ""],
     ["Light Perception", "Light Perception"],
     ["No Light Perception", "No Light Perception"],
     ["Not Done", "Not Done"]

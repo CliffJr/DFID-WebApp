@@ -1,30 +1,21 @@
-import React, { useState } from 'react';
-import { Row, Col, FormGroup, ControlLabel } from 'react-bootstrap';
+import React from 'react';
+import { Row, Col, ControlLabel } from 'react-bootstrap';
 import { Card } from "components/Card/Card.jsx";
-import Datetime from 'react-datetime';
 
-//import DatePicker from "react-datepicker";
-import { DatePicker, DatePickerInput } from 'rc-datepicker';
+import { DatePickerInput } from 'rc-datepicker';
 import 'rc-datepicker/lib/style.css';
-
-//import "react-datepicker/dist/react-datepicker.css";
-
 
 import ItemPatientForm from "./ItemPatientForm";
 import OptionsDrop from "./optionDrop";
 import OptionsTypeDiabetesDrop from './optionTypeDiabetesDrop';
 
 
-const StepOne = ({ setForm, dobDate, setDobDate, formData, ...props }) => {
-
-  //const {dob} = dobDate;
-
-  const [yearDMPatient, setYearDMPatient] = useState(new Date());
+const StepOne = ({ formData, setForm, dobPatient, setDobPatient, yearDMPatient, setYearDMPatient, ...props }) => {
 
   const { firstnamePatient, lastnamePatient, ncdNumberPatient, dfidStudyNumberPatient, optionsGender, optionTypeDiabetes } = formData;
-  
+
   return (
-    < div className="form">
+    <>
       <Row>
         <Col md={12}>
           <Card
@@ -97,34 +88,17 @@ const StepOne = ({ setForm, dobDate, setDobDate, formData, ...props }) => {
 
                 <Row>
                   <Col className="col-md-6">
-            <ControlLabel>Gender  </ControlLabel>
+                    <ControlLabel>Gender  </ControlLabel>
                     <OptionsDrop className="col-md-12" name="optionsGender" value={optionsGender} onChange={setForm} />
                   </Col>
                   <Col className="col-md-6">
-
-
-
-            <ControlLabel>Date Of Birth </ControlLabel>
-
-
-            <DatePickerInput
-               name="dobDate"
-               placeholder={dobDate}
-               selected={dobDate}
-               onChange={dobDate => setDobDate(dobDate)}
-               dateFormat="MM-dd-yyyy"
- 
-    />
-
-            {/* <DatePicker
-              name="dobDate"
-              className={"form-control"}
-              selected={dobDate}
-              onChange={dobDate => setDobDate(dobDate)}
-              dateFormat="MM-dd-yyyy"
-            /> */}
-
-
+                    <ControlLabel>Date Of Birth</ControlLabel>
+                    <DatePickerInput
+                      name="dobPatient"
+                      selected={dobPatient}
+                      onChange={dobPatient => setDobPatient(dobPatient)}
+                      dateFormat="MM-dd-yyyy"
+                    />
                   </Col>
                 </Row>
 
@@ -134,36 +108,25 @@ const StepOne = ({ setForm, dobDate, setDobDate, formData, ...props }) => {
                     <OptionsTypeDiabetesDrop className="col-md-12" name="optionTypeDiabetes" value={optionTypeDiabetes} onChange={setForm} />
                   </Col>
                   <Col className="col-md-6">
-                    <FormGroup>
-                      <ControlLabel>Year of DM diagnosis</ControlLabel>
-                      <Datetime
-                      
-                        type="date"
-                        inputProps={{ placeholder: "year of DM diagnosis" }}
-                        timeFormat={false}
-                        selected={yearDMPatient}
-                        onChange={yearDMPatient => setYearDMPatient(yearDMPatient)}
-                      />
-                    </FormGroup>
+                    <ControlLabel>Year of DM diagnosis</ControlLabel>
+                    <DatePickerInput
+                      name="yearDMPatient"
+                      selected={yearDMPatient}
+                      onChange={yearDMPatient => setYearDMPatient(yearDMPatient)}
+                    />
                   </Col>
                 </Row>
-
-<div className="jumbotron">
-                <Row>
-                <Col className="col-md-2"><button onClick={props.nextStep}>Next Step</button></Col>
-              </Row>
-</div>            
-
-                {/* <div>
-                  <button onClick={next}>Next</button>
+                <div className="jumbotron">
+                  <Row >
+                    <Col className="col-md-2"><button onClick={props.nextStep}>Next Step</button></Col>
+                  </Row>
                 </div>
-                <div className="clearfix" /> */}
               </>
             }
           />
         </Col>
       </Row>
-    </ div>
+    </>
   );
 }
 

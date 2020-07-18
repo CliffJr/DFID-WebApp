@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import { Grid, Row, Col } from "react-bootstrap";
 
 import Card from "components/Card/Card";
-import { iconsArray } from "variables/Variables.jsx";
+//import { iconsArray } from "variables/Variables.jsx";
 
 class Icons extends Component {
   render() {
@@ -13,23 +13,23 @@ class Icons extends Component {
           <Row>
             <Col md={12}>
               <Card
-                title="202 Awesome Stroke Icons"
+                title="Software User Guide"
                 ctAllIcons
                 category={
                   <span>
-                    Handcrafted by our friends from{" "}
-                    <a
+                    Software user guide ....{" "}
+                    {/* <a
                       target="_blank"
                       rel="noopener noreferrer"
                       href="http://themes-pixeden.com/font-demos/7-stroke/index.html"
                     >
                       Pixeden
-                    </a>
+                    </a> */}
                   </span>
                 }
                 content={
                   <Row>
-                    {iconsArray.map((prop, key) => {
+                    {/* {iconsArray.map((prop, key) => {
                       return (
                         <Col
                           lg={2}
@@ -45,7 +45,7 @@ class Icons extends Component {
                           </div>
                         </Col>
                       );
-                    })}
+                    })} */}
                   </Row>
                 }
               />

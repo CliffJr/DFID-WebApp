@@ -26,7 +26,6 @@ const DoctorDiagnosisItem = (props) => {
         { label: "Anti VEGF", value: "Anti VEGF" },
         { label: "Cateract extraction", value: "Cateract extraction" },
         { label: "Control Risk Factors", value: "Control Risk Factors" },
-        { label: "Evaluation Anterior Segment (ASE)", value: "Evaluation Anterior Segment (ASE)" },
         { label: "Evaluation Cataract", value: "Evaluation Cataract" },
         { label: "Evaluation Refraction", value: "Evaluation Refraction" },
         { label: "Evaluation Slit lamp", value: "Evaluation Slit lamp" },

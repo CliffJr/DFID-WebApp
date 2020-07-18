@@ -1,8 +1,9 @@
 import React from "react";
 
 const optionsSignsDR = [
-    ["Yes", "Male"],
-    ["No", "Female"],
+    ["", ""],
+    ["Yes", "Yes"],
+    ["No", "No"],
     ["Don't Know", "Don't Know"]
 ];
 

@@ -1,35 +1,36 @@
 
 import React, { Component } from "react";
-import ChartistGraph from "react-chartist";
-import { Grid, Row, Col } from "react-bootstrap";
+// import ChartistGraph from "react-chartist";
+// import { Grid, Row, Col } from "react-bootstrap";
 
-import { Card } from "components/Card/Card.jsx";
-import { StatsCard } from "components/StatsCard/StatsCard.jsx";
+// import { Card } from "components/Card/Card.jsx";
+// import { StatsCard } from "components/StatsCard/StatsCard.jsx";
 
-import {
-  dataPie,
-  legendPie,
-  dataSales,
-  optionsSales,
-  responsiveSales,
-  legendSales
-} from "variables/Variables.jsx";
+// import {
+//   dataPie,
+//   legendPie,
+//   dataSales,
+//   optionsSales,
+//   responsiveSales,
+//   legendSales
+// } from "variables/Variables.jsx";
 
 class About extends Component {
-  createLegend(json) {
-    var legend = [];
-    for (var i = 0; i < json["names"].length; i++) {
-      var type = "fa fa-circle text-" + json["types"][i];
-      legend.push(<i className={type} key={i} />);
-      legend.push(" ");
-      legend.push(json["names"][i]);
-    }
-    return legend;
-  }
+  // createLegend(json) {
+  //   var legend = [];
+  //   for (var i = 0; i < json["names"].length; i++) {
+  //     var type = "fa fa-circle text-" + json["types"][i];
+  //     legend.push(<i className={type} key={i} />);
+  //     legend.push(" ");
+  //     legend.push(json["names"][i]);
+  //   }
+  //   return legend;
+  // }
   render() {
     return (
       <div className="content">
-        <Grid fluid>
+        <h3> About the Team members which contibuted in the DFID Project. </h3>
+        {/* <Grid fluid>
           <Row>
             <Col lg={3} sm={6}>
               <StatsCard
@@ -105,7 +106,7 @@ class About extends Component {
           </Row>
 
        
-        </Grid>
+        </Grid> */}
       </div>
     );
   }

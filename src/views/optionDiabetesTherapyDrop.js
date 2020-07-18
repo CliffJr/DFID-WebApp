@@ -1,6 +1,7 @@
 import React from "react";
 
 const optionsDiabetesTherapy = [
+    ["", ""],
     ["Diet", "Diet"],
     ["None", "None"]
 ];

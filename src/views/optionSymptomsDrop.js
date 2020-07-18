@@ -1,6 +1,7 @@
 import React from "react";
 
 const optionsSymptoms = [
+    ["", ""],
     ["Blurred vision", "Blurred vision"],
     ["Fluctuating vision", "Fluctuating vision"], 
     ["Impaired color vision", "Impaired color vision"], 
