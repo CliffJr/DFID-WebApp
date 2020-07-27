@@ -41,67 +41,74 @@ const StepTwo = ({ formData, setForm, dobPatient, setDobPatient, yearDMPatient, 
     <Row>
       <Col md={12} className="text-left">
         <Card
-          title="Patient Eye Details"
+          title="Image Transfer"
           content={
             <>
               <Row>
                 <Col className="col-md-6">
+                  <ControlLabel>Right Eye Image 1</ControlLabel>
                   <input type="file" accept="image/*" onChange={onChangeImageUploadR1} value={pictureR1} />
                 </Col>
                 <Col className="col-md-6">
+                  <ControlLabel>Right Eye Image 2</ControlLabel>
                   <input type="file" accept="image/*" onChange={onChangeImageUploadR2} value={pictureR2} />
                 </Col>
               </Row>
               <Row>
                 <Col className="col-md-6">
+                  <ControlLabel>Left Eye Image 1</ControlLabel>
                   <input type="file" accept="image/*" onChange={onChangeImageUploadL1} value={pictureL1} />
                 </Col>
                 <Col className="col-md-6">
+                  <ControlLabel>Left Eye Image 2</ControlLabel>
                   <input type="file" accept="image/*" onChange={onChangeImageUploadL2} value={pictureL2} />
                 </Col>
               </Row>
-
+            
               <Row>
-                <Col className="col-md-12">
-                  <FormGroup controlId="formControlsSelect" >
-                    <ControlLabel>Signs Of DR</ControlLabel>
-                    <OptionsSignsDRDrop className="col-md-12" name="optionsSignsDR" value={optionsSignsDR} onChange={setForm} />
-                  </FormGroup>
-                </Col>
                 <Col className="col-md-12">
                   <FormGroup>
                     <ControlLabel>Date Images Taken</ControlLabel>
                     <DatePickerInput
+                      placeholder="e.g  31/03/1995"
                       name="dateImagesTaken"
                       dateFormat="MM-dd-yyyy"
-                      selected={dateImagesTaken}
+                      value={dateImagesTaken}
                       onChange={dateImagesTaken => setDateImagesTaken(dateImagesTaken)}
                     />
                   </FormGroup>
                 </Col>
                 <Col className="col-md-12">
+                  <FormGroup controlId="formControlsSelect" >
+                    <ControlLabel>Signs Of  DIABETIC RETINOPATHY</ControlLabel>
+                    <OptionsSignsDRDrop className="col-md-12" name="optionsSignsDR" value={optionsSignsDR} onChange={setForm} />
+                  </FormGroup>
+                </Col>
+                <Col className="col-md-12">
+                    <ControlLabel>Additional Comments</ControlLabel>
+                    <ItemPatientForm
+                      className="col-md-12"
+                      rows="10"
+                      componentClass="textarea"
+                      type="text"
+                      placeholder="enter text"
+                      value={additionalCommentsPatient}
+                      onChange={setForm}
+                    />
+                  </Col>
+                <Col className="col-md-12">
                   <FormGroup>
                     <ControlLabel>Date of Electronic Referal</ControlLabel>
                     <DatePickerInput
                       name="dateElectronicReferal"
+                      placeholder="e.g  31/03/1995"
                       dateFormat="MM-dd-yyyy"
-                      selected={dateElectronicReferal}
+                      value={dateElectronicReferal}
                       onChange={dateElectronicReferal => setDateElectronicReferal(dateElectronicReferal)}
                     />
                   </FormGroup>
                 </Col>
-                <Col className="col-md-12">
-                  <ControlLabel>Additional Comments</ControlLabel>
-                  <ItemPatientForm
-                    className="col-md-12"
-                    rows="10"
-                    componentClass="textarea"
-                    type="text"
-                    placeholder="additional comments"
-                    value={additionalCommentsPatient}
-                    onChange={setForm}
-                  />
-                </Col>
+
               </Row>
 
               <div className="jumbotron">

@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import StepWizard from 'react-step-wizard';
 import {useForm } from "react-hooks-helper";
+
 import StepOne from "./stepOne";
 import StepTwo from "./stepTwo";
 import StepThree from "./stepThree";
@@ -14,6 +15,7 @@ const defaultData = {
     dfidStudyNumberPatient: "",
     optionsGender: "",
     optionTypeDiabetes: "",
+    yearDMPatient: "",
 
     additionalCommentsPatient: "", 
     optionsSignsDR: "",
@@ -30,8 +32,7 @@ const defaultData = {
 const MultiStepForm = () => {
     //StepOne
     const [formData, setForm] = useForm(defaultData);
-    const [dobPatient, setDobPatient] = useState(new Date());
-    const [yearDMPatient, setYearDMPatient] = useState(new Date());
+    const [dobPatient, setDobPatient] = useState();
 
     //StepTwo
     const [pictureR1, setPictureR1] = useState(null);
@@ -39,20 +40,20 @@ const MultiStepForm = () => {
     const [pictureL1, setPictureL1] = useState(null);
     const [pictureL2, setPictureL2] = useState(null);
 
-    const [dateElectronicReferal, setDateElectronicReferal] = useState(new Date());
+    const [dateElectronicReferal, setDateElectronicReferal] = useState();
 
     //StepThree
-    const [dateImagesTaken, setDateImagesTaken] = useState(new Date());
-    const [dateHbA1ctaken, setDateHbA1ctaken] = useState(new Date());
-    const [dateReviewNurse, setDateReviewNurse] = useState(new Date());
+    const [dateImagesTaken, setDateImagesTaken] = useState();
+    const [dateHbA1ctaken, setDateHbA1ctaken] = useState();
+    const [dateReviewNurse, setDateReviewNurse] = useState();
 
-    const props = {formData, setForm, dobPatient, setDobPatient, yearDMPatient, setYearDMPatient, pictureR1, setPictureR1, pictureR2, setPictureR2, pictureL1, setPictureL1, pictureL2, setPictureL2, dateImagesTaken, setDateImagesTaken, dateElectronicReferal, setDateElectronicReferal, dateHbA1ctaken, setDateHbA1ctaken, dateReviewNurse, setDateReviewNurse};
+    const props = {formData, setForm, dobPatient, setDobPatient, pictureR1, setPictureR1, pictureR2, setPictureR2, pictureL1, setPictureL1, pictureL2, setPictureL2, dateImagesTaken, setDateImagesTaken, dateElectronicReferal, setDateElectronicReferal, dateHbA1ctaken, setDateHbA1ctaken, dateReviewNurse, setDateReviewNurse};
 
   return(
       <StepWizard  {...props}>
         <StepOne   {...props}/>
-        <StepTwo   {...props}/>
         <StepThree   {...props}/>
+        <StepTwo   {...props}/>
         <ReviewNewPatientDetails {...props}/>
         <SubmitPatientForm   {...props}/>
       </StepWizard>
@@ -60,3 +61,5 @@ const MultiStepForm = () => {
 }
 
 export default MultiStepForm;
+
+

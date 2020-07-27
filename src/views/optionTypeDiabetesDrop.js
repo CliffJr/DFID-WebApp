@@ -5,7 +5,6 @@ const optionTypeDiabetes = [
     ["DM 1", "DM 1"],
     ["DM 2", "DM 2"],
     ["Gestational", "Gestational"],
-    ["Other", "Other"]
 ];  
 
 const OptionsTypeDiabetesDrop = ({ label, ...others}) =>(

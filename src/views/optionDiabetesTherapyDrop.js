@@ -2,6 +2,8 @@ import React from "react";
 
 const optionsDiabetesTherapy = [
     ["", ""],
+    ["oral medication", "oral medication"],
+    ["injectables", "injectables"],
     ["Diet", "Diet"],
     ["None", "None"]
 ];
@@ -17,5 +19,5 @@ const OptionsDiabetesTherapyDrop = ({ label, ...others}) =>(
     </select>
     </>
 );
-
+ 
 export default OptionsDiabetesTherapyDrop;

@@ -4,7 +4,9 @@ import Card from "components/Card/Card.jsx";
 import Button from "components/CustomButton/CustomButton.jsx";                                                        
 
 const NewPatientsList = (props) => {
+
     const patientslist = props.newPatientDetails;
+
     return (
         <div className="content">
             <Grid fluid>
@@ -16,6 +18,7 @@ const NewPatientsList = (props) => {
                             ctTableFullWidth
                             ctTableResponsive
                             content={
+                                <>
                                 <Table hover>
                                     <thead>
                                         <tr>
@@ -26,7 +29,7 @@ const NewPatientsList = (props) => {
                                             <th>Message Date Received</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    {/* <tbody>
                                         {
                                             patientslist.map((currentPatient) => (
                                                 <tr key={currentPatient._id}>
@@ -41,8 +44,10 @@ const NewPatientsList = (props) => {
                                                 </tr>
                                             )) 
                                             }
-                                    </tbody>
+                                    </tbody> */}
                                 </Table>
+                                   
+                                  </>
                             }
                         />
                     </Col>

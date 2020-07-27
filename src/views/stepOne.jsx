@@ -1,18 +1,28 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Row, Col, ControlLabel } from 'react-bootstrap';
 import { Card } from "components/Card/Card.jsx";
+import CreatableSelect from 'react-select/creatable';
 
 import { DatePickerInput } from 'rc-datepicker';
 import 'rc-datepicker/lib/style.css';
 
 import ItemPatientForm from "./ItemPatientForm";
 import OptionsDrop from "./optionDrop";
-import OptionsTypeDiabetesDrop from './optionTypeDiabetesDrop';
-
+import StepThree from './stepThree';
 
 const StepOne = ({ formData, setForm, dobPatient, setDobPatient, yearDMPatient, setYearDMPatient, ...props }) => {
 
-  const { firstnamePatient, lastnamePatient, ncdNumberPatient, dfidStudyNumberPatient, optionsGender, optionTypeDiabetes } = formData;
+  const { firstnamePatient, lastnamePatient, ncdNumberPatient, dfidStudyNumberPatient, optionsGender } = formData;
+
+  const optionTypeDiabetes = [
+    { label: "", value: ""},
+    { label: "DM 1", value: "DM 1"},
+    { label: "DM 2", value: "DM 2"},
+    { label: "Gestational", value: "Gestational"},
+  ];
+
+  //Hooks
+  const [selectedTypesDiabetes, setSelectedTypesDiabetes] = useState([]);
 
   return (
     <>
@@ -67,7 +77,7 @@ const StepOne = ({ formData, setForm, dobPatient, setDobPatient, yearDMPatient, 
                       name="ncdNumberPatient"
                       type="text"
                       bsClass="form-control"
-                      placeholder="08-05-OA-DFID-0000"
+                      placeholder="PP-DD-SS_YYYY-NCD_0000"
                       required={true}
                       value={ncdNumberPatient}
                       onChange={setForm}
@@ -94,10 +104,11 @@ const StepOne = ({ formData, setForm, dobPatient, setDobPatient, yearDMPatient, 
                   <Col className="col-md-6">
                     <ControlLabel>Date Of Birth</ControlLabel>
                     <DatePickerInput
+                      placeholder="e.g  31/03/1995"
                       name="dobPatient"
-                      selected={dobPatient}
+                      value={dobPatient}
                       onChange={dobPatient => setDobPatient(dobPatient)}
-                      dateFormat="MM-dd-yyyy"
+                      dateFormat="DD-MM-YYYY"
                     />
                   </Col>
                 </Row>
@@ -105,17 +116,25 @@ const StepOne = ({ formData, setForm, dobPatient, setDobPatient, yearDMPatient, 
                 <Row>
                   <Col className="col-md-6">
                     <ControlLabel>Type of Diabetes</ControlLabel>
-                    <OptionsTypeDiabetesDrop className="col-md-12" name="optionTypeDiabetes" value={optionTypeDiabetes} onChange={setForm} />
+                    <CreatableSelect
+                      isMulti
+                      name="optionTypeDiabetes"
+                      options={optionTypeDiabetes}
+                      selected={selectedTypesDiabetes}
+                      onChange={setSelectedTypesDiabetes}
+                    />
                   </Col>
                   <Col className="col-md-6">
                     <ControlLabel>Year of DM diagnosis</ControlLabel>
-                    <DatePickerInput
+                    <ItemPatientForm
+                      className="col-md-12"
                       name="yearDMPatient"
-                      selected={yearDMPatient}
-                      onChange={yearDMPatient => setYearDMPatient(yearDMPatient)}
+                      value={yearDMPatient}
+                      onChange={setForm}
                     />
                   </Col>
                 </Row>
+                <br/>
                 <div className="jumbotron">
                   <Row >
                     <Col className="col-md-2"><button onClick={props.nextStep}>Next Step</button></Col>

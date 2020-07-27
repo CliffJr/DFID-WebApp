@@ -38,7 +38,7 @@ const dashboardRoutes = [
   },
   {
     path: "/diagnostics",
-    name: "Doctor's Diagnostics",
+    name: "Doctor's Review",
     icon: "pe-7s-note2",
     component: DiagnosticReports,
     layout: "/admin"
