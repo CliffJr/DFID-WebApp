@@ -44,7 +44,7 @@ class Notifications extends Component {
               <StatsCard
                 bigIcon={<i className="pe-7s-graph1 text-danger" />}
                 statsText=""
-                statsValue="23"
+                statsValue="+23"
                 statsIcon={<i className="fa fa-clock-o" />}
                 statsIconText="Referrals to consultant"
               />
@@ -53,7 +53,7 @@ class Notifications extends Component {
               <StatsCard
                 bigIcon={<i className="pe-7s-server text-warning" />}
                 statsText=""
-                statsValue="+45"
+                statsValue="5"
                 statsIcon={<i className="fa fa-refresh" />}
                 statsIconText="Images reviewed by consultant"
               />

@@ -70,7 +70,7 @@ const StepTwo = ({ formData, setForm, dobPatient, setDobPatient, yearDMPatient, 
                   <FormGroup>
                     <ControlLabel>Date Images Taken</ControlLabel>
                     <DatePickerInput
-                      placeholder="e.g  31/03/1995"
+                      placeholder="DD/MM/YYYY"
                       name="dateImagesTaken"
                       dateFormat="MM-dd-yyyy"
                       value={dateImagesTaken}
@@ -101,7 +101,7 @@ const StepTwo = ({ formData, setForm, dobPatient, setDobPatient, yearDMPatient, 
                     <ControlLabel>Date of Electronic Referal</ControlLabel>
                     <DatePickerInput
                       name="dateElectronicReferal"
-                      placeholder="e.g  31/03/1995"
+                      placeholder="DD/MM/YYYY"
                       dateFormat="MM-dd-yyyy"
                       value={dateElectronicReferal}
                       onChange={dateElectronicReferal => setDateElectronicReferal(dateElectronicReferal)}

@@ -2,15 +2,15 @@ import React, { useState } from 'react';
 import { Row, Col, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 import CreatableSelect from 'react-select/creatable';
 
+import { DatePickerInput } from 'rc-datepicker';
+import 'rc-datepicker/lib/style.css';
+
 import { Card } from "components/Card/Card.jsx";
 import { FormInputs } from 'components/FormInputs/FormInputs.jsx'
 import Button from "components/CustomButton/CustomButton.jsx";
-import Datetime from 'react-datetime';
 import 'react-datetime/css/react-datetime.css';
 
-
-
-const DoctorDiagnosisItem = (props) => {
+const DoctorDiagnosisItem = ({ dateReviewDoctor, setDateReviewDoctor, ...pros }) => {
     const optionsDiagnosis = [
         { label: "No abnormalities detected", value: "No abnormalities detected" },
         { label: "Cataracts", value: "Cataracts" },
@@ -65,8 +65,6 @@ const DoctorDiagnosisItem = (props) => {
     const [selectedReferralConsultant, setSelectedReferralConsultant] = useState([]);
     const [doctorName] = useState([]);
 
-    //Handle Hooks
-
 
     return (
         <Row>
@@ -90,7 +88,18 @@ const DoctorDiagnosisItem = (props) => {
                                         }
                                     ]}
                                 />
-                               
+                                <Row>
+                                    <Col className="col-md-6">
+                                        <ControlLabel>Date Review</ControlLabel>
+                                        <DatePickerInput
+                                            name="dateReviewDoctor"
+                                            placeholder="DD/MM/YYYY"
+                                            dateFormat="MM-dd-yyyy"
+                                            value={dateReviewDoctor}
+                                            onChange={dateReviewDoctor => setDateReviewDoctor(dateReviewDoctor)}
+                                        />
+                                    </Col>
+                                </Row>
                                 <Row>
                                     <Col className="col-md-6">
                                         <FormGroup controlId="formControlsSelect" >

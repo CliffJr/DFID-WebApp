@@ -1,11 +1,10 @@
 import React from 'react';
 import { Grid, Row, Col, Table } from "react-bootstrap";
-import Card from "components/Card/Card.jsx";
-import Button from "components/CustomButton/CustomButton.jsx";                                                        
+import Card from "components/Card/Card.jsx";                                                       
 
 const NewPatientsList = (props) => {
 
-    const patientslist = props.newPatientDetails;
+    // const patientslist = props.newPatientDetails;
 
     return (
         <div className="content">

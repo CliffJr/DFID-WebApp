@@ -46,8 +46,9 @@ const MultiStepForm = () => {
     const [dateImagesTaken, setDateImagesTaken] = useState();
     const [dateHbA1ctaken, setDateHbA1ctaken] = useState();
     const [dateReviewNurse, setDateReviewNurse] = useState();
+    const [dateReviewDoctor, setDateReviewDoctor] = useState();
 
-    const props = {formData, setForm, dobPatient, setDobPatient, pictureR1, setPictureR1, pictureR2, setPictureR2, pictureL1, setPictureL1, pictureL2, setPictureL2, dateImagesTaken, setDateImagesTaken, dateElectronicReferal, setDateElectronicReferal, dateHbA1ctaken, setDateHbA1ctaken, dateReviewNurse, setDateReviewNurse};
+    const props = {formData, setForm, dobPatient, setDobPatient, pictureR1, setPictureR1, pictureR2, setPictureR2, pictureL1, setPictureL1, pictureL2, setPictureL2, dateImagesTaken, setDateImagesTaken, dateElectronicReferal, setDateElectronicReferal, dateHbA1ctaken, setDateHbA1ctaken, dateReviewNurse, setDateReviewNurse, dateReviewDoctor, setDateReviewDoctor};
 
   return(
       <StepWizard  {...props}>

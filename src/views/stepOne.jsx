@@ -8,7 +8,6 @@ import 'rc-datepicker/lib/style.css';
 
 import ItemPatientForm from "./ItemPatientForm";
 import OptionsDrop from "./optionDrop";
-import StepThree from './stepThree';
 
 const StepOne = ({ formData, setForm, dobPatient, setDobPatient, yearDMPatient, setYearDMPatient, ...props }) => {
 
@@ -19,6 +18,7 @@ const StepOne = ({ formData, setForm, dobPatient, setDobPatient, yearDMPatient, 
     { label: "DM 1", value: "DM 1"},
     { label: "DM 2", value: "DM 2"},
     { label: "Gestational", value: "Gestational"},
+    { label: "Other -->", value: " & "}
   ];
 
   //Hooks
@@ -32,16 +32,6 @@ const StepOne = ({ formData, setForm, dobPatient, setDobPatient, yearDMPatient, 
             title="Patient Details"
             content={
               <>
-                <Row>
-                  <Col className="col-md-12">
-                    <ItemPatientForm
-                      className="col-md-12"
-                      type="text"
-                      placeholder="John Doe"
-                      disabled={true}
-                    />
-                  </Col>
-                </Row>
 
                 <Row>
                   <Col className="col-md-6" >
@@ -104,7 +94,7 @@ const StepOne = ({ formData, setForm, dobPatient, setDobPatient, yearDMPatient, 
                   <Col className="col-md-6">
                     <ControlLabel>Date Of Birth</ControlLabel>
                     <DatePickerInput
-                      placeholder="e.g  31/03/1995"
+                      placeholder="DD/MM/YYYY"
                       name="dobPatient"
                       value={dobPatient}
                       onChange={dobPatient => setDobPatient(dobPatient)}
@@ -128,6 +118,7 @@ const StepOne = ({ formData, setForm, dobPatient, setDobPatient, yearDMPatient, 
                     <ControlLabel>Year of DM diagnosis</ControlLabel>
                     <ItemPatientForm
                       className="col-md-12"
+                      placeholder="YYYY"
                       name="yearDMPatient"
                       value={yearDMPatient}
                       onChange={setForm}

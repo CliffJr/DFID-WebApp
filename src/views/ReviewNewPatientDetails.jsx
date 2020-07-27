@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Row, Col, Modal, Button } from 'react-bootstrap';
+import { Row, Col, Modal } from 'react-bootstrap';
 import { Card } from "components/Card/Card.jsx";
 import 'react-datetime/css/react-datetime.css';
 
@@ -31,21 +31,22 @@ const ReviewNewPatientDetails = ({ formData, setForm, dobPatient, setDobPatient,
                                 <>
                                     <Row>
                                         <Col className="col-md-12">
-
-                                            First name: {`${firstnamePatient}`} <br />
-                                            Last Name: {`${lastnamePatient}`}  <br />
-                                            NCD Number Patient: {`${ncdNumberPatient}`} <br />
-                                            DFID Study Number : {`${dfidStudyNumberPatient}`} <br />
-                                            Gender: {`${optionsGender}`} <br />
-                                            Type of Diabetes: {`${optionTypeDiabetes}`} <br />
-                                            DOB: {`${dobPatient}`} <br />
-
+                                            <Col className="col-md-12">
+                                                First name: {`${firstnamePatient}`} <br />
+                                                Last Name: {`${lastnamePatient}`}  <br />
+                                                NCD Number Patient: {`${ncdNumberPatient}`} <br />
+                                                DFID Study Number : {`${dfidStudyNumberPatient}`} <br />
+                                                Gender: {`${optionsGender}`} <br />
+                                                Type of Diabetes: {`${optionTypeDiabetes}`} <br />
+                                                DOB: {`${dobPatient}`} <br />
+                                            </Col>
                                         </Col>
                                     </Row>
                                     <div className="jumbotron">
                                         <Row>
                                             <Col className="col-md-2"><button onClick={props.previousStep}>Previous Step</button></Col>
-                                            <Col className="col-md-2"><button onClick={handleShow}>Submit</button></Col>
+                                            <Col className="col-md-2"><button onClick={handleShow}>Submit </button></Col>
+                                            <Col className="col-md-2"><button onClick={props.firstStep}>New Patient *</button></Col>
                                         </Row>
                                     </div>
                                 </>
@@ -58,17 +59,8 @@ const ReviewNewPatientDetails = ({ formData, setForm, dobPatient, setDobPatient,
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Modal heading</Modal.Title>
+                    <Modal.Title><h2>Sucessfully, Saved!!!</h2></Modal.Title>
                 </Modal.Header>
-                <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
-                        Close
-  </Button>
-                    <Button variant="primary" onClick={handleClose}>
-                        Save Changes
-  </Button>
-                </Modal.Footer>
             </Modal>
         </>
     );
