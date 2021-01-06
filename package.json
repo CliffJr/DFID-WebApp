@@ -7,7 +7,7 @@
     "@material-ui/icons": "^4.5.1",
     "@reach/tabs": "^0.10.5",
     "DatePicker": "^2.0.0",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "body-parser": "^1.19.0",
     "bootstrap": "3.3.7",
     "chartist": "0.10.1",
